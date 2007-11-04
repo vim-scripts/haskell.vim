@@ -1,0 +1,8 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2062
+
+This script provides syntax highlight for Haskell.
+It will highlight all standard prelude functions, types and constants.
+
+Download at http://rcg-pt.net/programacao/haskell.vim.gz
+
+PS: This script is an improvement on the vim default haskell script.
