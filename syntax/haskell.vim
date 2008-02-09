@@ -1,10 +1,10 @@
 " Vim syntax file
 " Language:     Haskell
-" Maintainer:   Rui Carlos Goncalves <rui.c.mcc@gmail.com>
-" Last Change:  November 4, 2007
+" Maintainer:   Rui Carlos A. Goncalves <rcgoncalves.pt@gmail.com>
+" Last Change:  February 4, 2008
 "
-" Version:      1.0
-" Url:          http://www.rcg-pt.net/prog/haskell.vim
+" Version:      1.2
+" Url:          http://www.rcg-pt.net/programacao/haskell.vim.gz
 "
 " Original Author: John Williams <jrw@pobox.com>
 
@@ -17,17 +17,17 @@ endif
 
 
 " (Qualified) identifiers (no default highlighting)
-syn match ConId "\(\<[A-Z][a-zA-Z0-9_']*\.\)\=\<[A-Z][a-zA-Z0-9_']*\>"
-syn match VarId "\(\<[A-Z][a-zA-Z0-9_']*\.\)\=\<[a-z][a-zA-Z0-9_']*\>"
+syn match ConId         "\(\<[A-Z][a-zA-Z0-9_']*\.\)\=\<[A-Z][a-zA-Z0-9_']*\>"
+syn match VarId         "\(\<[A-Z][a-zA-Z0-9_']*\.\)\=\<[a-z][a-zA-Z0-9_']*\>"
 
 
 " Infix operators--most punctuation characters and any (qualified) identifier
 " enclosed in `backquotes`. An operator starting with : is a constructor,
 " others are variables (e.g. functions).
-syn match hsVarSym "\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[-!#$%&\*\+/<=>\?@\\^|~.][-!#$%&\*\+/<=>\?@\\^|~:.]*"
-syn match hsConSym "\(\<[A-Z][a-zA-Z0-9_']*\.\)\=:[-!#$%&\*\+./<=>\?@\\^|~:]*"
-syn match hsVarSym "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[a-z][a-zA-Z0-9_']*`"
-syn match hsConSym "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[A-Z][a-zA-Z0-9_']*`"
+syn match hsVarSym      "\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[-!#$%&\*\+/<=>\?@\\^|~.][-!#$%&\*\+/<=>\?@\\^|~:.]*"
+syn match hsConSym      "\(\<[A-Z][a-zA-Z0-9_']*\.\)\=:[-!#$%&\*\+./<=>\?@\\^|~:]*"
+syn match hsVarSym      "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[a-z][a-zA-Z0-9_']*`"
+syn match hsConSym      "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[A-Z][a-zA-Z0-9_']*`"
 
 
 " Reserved symbols--cannot be overloaded.
@@ -48,26 +48,25 @@ syn match   hsFloat		"\<[0-9]\+\.[0-9]\+\([eE][-+]\=[0-9]\+\)\=\>"
 " Keyword definitions. These must be patters instead of keywords
 " because otherwise they would match as keywords at the start of a
 " "literate" comment (see lhs.vim).
-syn match hsModule		"\<module\>"
-syn match hsImport		"\<import\>.*"he=s+6 contains=hsImportMod
-syn match hsImportMod		contained "\<\(as\|qualified\|hiding\)\>"
-syn match hsInfix		"\<\(infix\|infixl\|infixr\)\>"
-syn match hsStructure		"\<\(class\|data\|deriving\|instance\|default\|where\)\>"
-syn match hsTypedef		"\<\(type\|newtype\)\>"
-syn match hsStatement		"\<\(do\|return\|case\|of\|let\|in\)\>"
-syn match hsConditional		"\<\(if\|then\|else\)\>"
+syn match hsModule	"\<module\>"
+syn match hsImport	"\<import\>.*"he=s+6 contains=hsImportMod
+syn match hsImportMod	contained "\<\(as\|qualified\|hiding\)\>"
+syn match hsInfix	"\<\(infix\|infixl\|infixr\)\>"
+syn match hsStructure	"\<\(class\|data\|deriving\|instance\|default\|where\)\>"
+syn match hsTypedef	"\<\(type\|newtype\)\>"
+syn match hsStatement	"\<\(do\|return\|case\|of\|let\|in\)\>"
+syn match hsConditional	"\<\(if\|then\|else\)\>"
 
 
 " Types from the standard prelude.
-syn match hsType "\<\(Bool\|Maybe\|Either\|Ordering\)\>"
-syn match hsType "\<\(Char\|String\|Int\|Integer\|Float\|Double\|Rational\|IO\)\>"
-syn match hsType "\<\(ReadS\|ShowS\)\>"
-syn match hsType "\<\(FilePath\|IOError\)\>"
-syn match hsType "\<\(\)\>"
+syn match hsType        "\<\(Bool\|Maybe\|Either\|Ordering\)\>"
+syn match hsType        "\<\(Char\|String\|Int\|Integer\|Float\|Double\|Rational\|IO\)\>"
+syn match hsType        "\<\(ReadS\|ShowS\)\>"
+syn match hsType        "\<\(FilePath\|IOError\)\>"
 
 " Classes from the standard prelude
-syn match hsType "\<\(Eq\|Ord\|Enum\|Bounded\|Num\|Real\|Integral\|Fractional\|Floating\|RealFrac\|RealFloat\|Monad\|Functor\)\>"
-syn match hsType "\<\(Show\|Read\)\>"
+syn match hsType        "\<\(Eq\|Ord\|Enum\|Bounded\|Num\|Real\|Integral\|Fractional\|Floating\|RealFrac\|RealFloat\|Monad\|Functor\)\>"
+syn match hsType        "\<\(Show\|Read\)\>"
 
 
 " Constants from the standard prelude.
@@ -78,7 +77,7 @@ syn match hsOrdering    "\<\(LT\|EQ\|GT\)\>"
 
 
 " Functions from the standard prelude.
-syn match hsFunction    "\<\(compare\|max\|mim\)\>"
+syn match hsFunction    "\<\(compare\|max\|min\)\>"
 syn match hsFunction    "\<\(succ\|pred\|toEnum\|fromEnum\|enumFrom\|enumFromThen\|enumFromTo\|enumFromThenTo\)\>"
 syn match hsFunction    "\<\(minBound\|maxBound\)\>"
 syn match hsFunction    "\<\(negate\|abs\|signum\|fromInteger\)\>"
@@ -141,40 +140,37 @@ if version >= 508 || !exists("did_hs_syntax_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  hi link hsModule			  hsStructure
-  hi link hsImport			  Include
-  hi link hsImportMod			  hsImport
-  hi link hsInfix			  PreProc
-  hi link hsStructure			  Structure
-  hi link hsStatement			  Statement
-  hi link hsConditional			  Conditional
-  hi link hsSpecialChar			  SpecialChar
-  hi link hsTypedef			  Typedef
-  hi link hsVarSym			  hsOperator
-  hi link hsConSym			  hsOperator
-  hi link hsOperator			  Operator
-  if exists("hs_highlight_delimiters")
-    " Some people find this highlighting distracting.
-    hi link hsDelimiter			  Delimiter
-  endif
-  hi link hsSpecialCharError		  Error
-  hi link hsString			  String
-  hi link hsCharacter			  Character
-  hi link hsNumber			  Number
-  hi link hsFloat			  Float
-  hi link hsConditional			  Conditional
-  hi link hsLiterateComment		  hsComment
-  hi link hsBlockComment		  hsComment
-  hi link hsLineComment			  hsComment
-  hi link hsComment			  Comment
-  hi link hsPragma			  SpecialComment
-  hi link hsBoolean			  Boolean
-  hi link hsType			  Type
-  hi link hsFunction                      Function
-  hi link hsMaybe			  hsEnumConst
-  hi link hsOrdering			  hsEnumConst
-  hi link hsEnumConst			  Constant
-  hi link hsDebug			  Debug
+  hi link hsModule              hsStructure
+  hi link hsImport              Include
+  hi link hsImportMod           hsImport
+  hi link hsInfix               PreProc
+  hi link hsStructure           Structure
+  hi link hsStatement           Statement
+  hi link hsConditional         Conditional
+  hi link hsSpecialChar	        SpecialChar
+  hi link hsTypedef             Typedef
+  hi link hsVarSym              hsOperator
+  hi link hsConSym              hsOperator
+  hi link hsOperator            Operator
+  hi link hsSpecialCharError    Error
+  hi link hsString              String
+  hi link hsCharacter           Character
+  hi link hsNumber              Number
+  hi link hsFloat               Float
+  hi link hsConditional         Conditional
+  hi link hsLiterateComment     hsComment
+  hi link hsBlockComment        hsComment
+  hi link hsLineComment         hsComment
+  hi link hsComment             Comment
+  hi link hsPragma              SpecialComment
+  hi link hsBoolean             Boolean
+  hi link hsType                Type
+  hi link hsFunction            Function
+  hi link hsMaybe               hsEnumConst
+  hi link hsOrdering            hsEnumConst
+  hi link hsEnumConst           Constant
+  hi link hsConstant            Constant
+  hi link hsDebug               Debug
 
   delcommand HiLink
 endif
