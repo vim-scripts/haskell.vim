@@ -1,10 +1,10 @@
 " Vim syntax file
 " Language:     Haskell
 " Maintainer:   Rui Carlos A. Goncalves <rcgoncalves.pt@gmail.com>
-" Last Change:  February 4, 2008
+" Last Change:  September 15, 2010
 "
-" Version:      1.2
-" Url:          http://www.rcg-pt.net/programacao/haskell.vim.gz
+" Version:      2.0
+" Url:          http://rcg-pt.net/programacao/haskell.vim.gz
 "
 " Original Author: John Williams <jrw@pobox.com>
 
@@ -49,14 +49,15 @@ syn match   hsFloat		"\<[0-9]\+\.[0-9]\+\([eE][-+]\=[0-9]\+\)\=\>"
 " because otherwise they would match as keywords at the start of a
 " "literate" comment (see lhs.vim).
 syn match hsModule	"\<module\>"
-syn match hsImport	"\<import\>.*"he=s+6 contains=hsImportMod
+syn match hsImport	"\<import\>.*"he=s+6 contains=hsImportMod,hsString,hsType,hsFunction
 syn match hsImportMod	contained "\<\(as\|qualified\|hiding\)\>"
 syn match hsInfix	"\<\(infix\|infixl\|infixr\)\>"
 syn match hsStructure	"\<\(class\|data\|deriving\|instance\|default\|where\)\>"
 syn match hsTypedef	"\<\(type\|newtype\)\>"
 syn match hsStatement	"\<\(do\|return\|case\|of\|let\|in\)\>"
 syn match hsConditional	"\<\(if\|then\|else\)\>"
-
+" Haskell 2010 keywords
+syn match hsForeign	"\<foreign\>"
 
 " Types from the standard prelude.
 syn match hsType        "\<\(Bool\|Maybe\|Either\|Ordering\)\>"
@@ -103,7 +104,7 @@ syn match hsFunction    "\<\(foldl\|foldl1\|scanl\|scanl1\|foldr\|foldr1\|scanr\
 syn match hsFunction    "\<\(iterate\|repeat\|replicate\|cycle\)\>"
 syn match hsFunction    "\<\(take\|drop\|splitAt\|takeWhile\|dropWhile\|span\|break\)\>"
 syn match hsFunction    "\<\(lines\|words\|unlines\|unwords\|reverse\|and\|or\)\>"
-syn match hsFunction    "\<\(any\|elem\|notElem\|lookup\)\>"
+syn match hsFunction    "\<\(any\|all\|elem\|notElem\|lookup\)\>"
 syn match hsFunction    "\<\(sum\|product\|maximum\|minimum\)\>"
 syn match hsFunction    "\<\(zip\|zip3\|zipWith\|zipWith3\|unzip\|unzip3\)\>"
 syn match hsFunction    "\<\(readsPrec\|readList\)\>"
@@ -143,6 +144,7 @@ if version >= 508 || !exists("did_hs_syntax_inits")
   hi link hsModule              hsStructure
   hi link hsImport              Include
   hi link hsImportMod           hsImport
+  hi link hsForeign		hsImport
   hi link hsInfix               PreProc
   hi link hsStructure           Structure
   hi link hsStatement           Statement
@@ -165,6 +167,7 @@ if version >= 508 || !exists("did_hs_syntax_inits")
   hi link hsPragma              SpecialComment
   hi link hsBoolean             Boolean
   hi link hsType                Type
+  hi link hsForeignType		Type
   hi link hsFunction            Function
   hi link hsMaybe               hsEnumConst
   hi link hsOrdering            hsEnumConst
