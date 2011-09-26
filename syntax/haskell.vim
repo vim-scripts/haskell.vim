@@ -4,7 +4,7 @@
 " Last Change:  September 15, 2010
 "
 " Version:      2.0
-" Url:          http://rcg-pt.net/programacao/haskell.vim.gz
+" Url:          http://rcgoncalves.net/files/haskell.zip
 "
 " Original Author: John Williams <jrw@pobox.com>
 
